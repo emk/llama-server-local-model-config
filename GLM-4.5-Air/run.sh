@@ -8,11 +8,23 @@
 # See https://github.com/ggml-org/llama.cpp/pull/15186 for the
 # PR needed to fix tool calling.
 
+set -euo pipefail
+
+# Load environment variables from .env file in project root
+if [[ -f ../.env ]]; then
+  source ../.env
+fi
+
+if [[ -z "${API_KEY:-}" ]]; then
+  echo "Error: API_KEY is not set in .env file" >&2
+  exit 1
+fi
+
 model_dir="$(pwd)"
 cd ~/src/llama-cpp || exit 1
 build/bin/llama-server \
     --no-webui  \
-    --api-key dummy-key \
+    --api-key "$API_KEY" \
     --jinja \
     --reasoning-format none \
     -m "${model_dir}/GLM-4.5-Air-IQ4_XS-00001-of-00002.gguf" \
@@ -27,4 +39,3 @@ build/bin/llama-server \
     --no-mmap \
     --ctx-size "$(( 32*1024 ))" \
     --log-verbose
-
