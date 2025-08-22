@@ -10,7 +10,7 @@
 
 # Source centralized setup script
 source ../setup_llama_server.sh
-switch_to_llama_cpp_dir llama-cpp
+switch_to_llama_cpp_dir llama-cpp-master
 
 build/bin/llama-server \
     --no-webui  \
