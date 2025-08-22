@@ -4,9 +4,6 @@
 #
 # We run this on port 3191 instead of 3190, to avoid conflict
 # with Jan AI.
-#
-# See https://github.com/ggml-org/llama.cpp/pull/15186 for the
-# PR needed to fix tool calling.
 
 # Source centralized setup script
 source ../setup_llama_server.sh
@@ -16,16 +13,17 @@ build/bin/llama-server \
     --no-webui  \
     --api-key "$API_KEY" \
     --jinja \
-    --reasoning-format none \
-    -m "${model_dir}/GLM-4.5-Air-IQ4_XS-00001-of-00002.gguf" \
-    --alias GLM-4.5-Air \
+    --reasoning-format auto \
+    -m "${model_dir}/gpt-oss-20b-F16.gguf" \
+    --alias gpt-oss-20b \
     --host 0.0.0.0 \
     --port 3191 \
-    --chat-template-file "${model_dir}/template-1.jinja" \
-    --gpu-layers 10 \
+    --gpu-layers 100 \
     --batch-size 2048 \
     --ubatch-size 512 \
     --no-context-shift \
     --no-mmap \
-    --ctx-size "$(( 32*1024 ))" \
+    --ctx-size "$(( 48*1024 ))" \
+    --flash-attn \
+    --grammar-file "${model_dir}/cline.gbnf" \
     --log-verbose

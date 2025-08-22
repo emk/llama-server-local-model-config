@@ -19,5 +19,11 @@ if [[ -z "${API_KEY:-}" ]]; then
   exit 1
 fi
 
+# Remember the directory containing our models.
 model_dir="$(pwd)"
-cd ~/src/llama-cpp || exit 1
+
+# Function to change to the llama-cpp directory
+switch_to_llama_cpp_dir() {
+  local model_dir="$1"
+  cd ~/src/"$model_dir" || exit 1
+}
