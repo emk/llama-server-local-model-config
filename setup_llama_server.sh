@@ -1,0 +1,23 @@
+# DO NOT INVOKE DIRECTLY. This is sourced by run.sh scripts.
+#
+# Centralized setup script for llama.cpp server configuration. This script
+# contains all common setup code shared across model configurations. The
+# llama-server command and its arguments remain in individual run.sh files.
+
+set -euo pipefail
+
+# Load environment variables from .env file in project root.
+#
+# Note that the ../.env should point to the right place when
+# we're sourced from other directories.
+if [[ -f ../.env ]]; then
+  source ../.env
+fi
+
+if [[ -z "${API_KEY:-}" ]]; then
+  echo "Error: API_KEY is not set in .env file" >&2
+  exit 1
+fi
+
+model_dir="$(pwd)"
+cd ~/src/llama-cpp || exit 1

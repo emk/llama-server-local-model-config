@@ -8,20 +8,9 @@
 # See https://github.com/ggml-org/llama.cpp/issues/15012#issuecomment-3165984279
 # for a template file which works, at least occasionally.
 
-set -euo pipefail
+# Source centralized setup script
+source ../setup_llama_server.sh
 
-# Load environment variables from .env file in project root
-if [[ -f ../.env ]]; then
-  source ../.env
-fi
-
-if [[ -z "${API_KEY:-}" ]]; then
-  echo "Error: API_KEY is not set in .env file" >&2
-  exit 1
-fi
-
-model_dir="$(pwd)"
-cd ~/src/llama-cpp || exit 1
 build/bin/llama-server \
     --no-webui  \
     --api-key "$API_KEY" \
