@@ -14,3 +14,5 @@ set -euo pipefail
 Finally, all credentials should stored in a top-level `.env` file, which should be included in `.gitignore`. There should _also_ be an `.env.template` file which contains the same variables with empty values assigned. This should be committed.
 
 When using shell variables, be sure to quote them as needed to protect against whitespace in their values.
+
+Use UPPERCASE variable names for `export`ed variables or ones we get from our calling environment. User lowercase for script-internal and `local` variables.

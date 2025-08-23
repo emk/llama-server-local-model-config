@@ -19,6 +19,13 @@ if [[ -z "${API_KEY:-}" ]]; then
   exit 1
 fi
 
+# Our host.
+host="${HOST:-0.0.0.0}"
+
+# Our port. We run this on port 3191 instead of 3190, to avoid conflict with Jan
+# AI.
+port="${PORT:-3191}"
+
 # Remember the directory containing our models.
 model_dir="$(pwd)"
 
