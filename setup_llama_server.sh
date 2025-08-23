@@ -31,6 +31,6 @@ model_dir="$(pwd)"
 
 # Function to change to the llama-cpp directory
 switch_to_llama_cpp_dir() {
-  local model_dir="$1"
-  cd ~/src/"$model_dir" || exit 1
+  local llama_dir="$1"
+  cd ~/src/"$llama_dir" || exit 1
 }
