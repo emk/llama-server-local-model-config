@@ -12,6 +12,8 @@ Basically, these models are a slightly smarter version of [keeping a rubber duck
 
 **Disclosure:** Some code in this repo is written using the agents it supports, because I need to test them somehow.
 
+The various Jinja templates and BNF grammar files are typically taken from GitHub issue threads for `llama-server`. You should be able to find the originals by reading the comments in `run.sh`.
+
 ## Setup
 
 To use on a new machine:
