@@ -12,13 +12,14 @@ switch_to_llama_cpp_dir llama-cpp-glm45
 build/bin/llama-server $llama_default_args \
     --jinja \
     --reasoning-format none \
-    -m "${model_dir}/GLM-4.5-Air-IQ4_XS-00001-of-00002.gguf" \
+    --model "${model_dir}/GLM-4.5-Air-IQ4_XS-00001-of-00002.gguf" \
+    --model-draft "${model_dir}/GLM-4.5-DRAFT-0.6B-32k-Q4_0.gguf" \
     --alias GLM-4.5-Air \
     --chat-template-file "${model_dir}/template-1.jinja" \
-    --gpu-layers 15 \
+    --gpu-layers 10 \
+    --gpu-layers-draft 100 \
     --batch-size 2048 \
     --ubatch-size 512 \
     --no-mmap \
     --ctx-size "$(( 32*1024 ))" \
-    --flash-attn \
     --threads 8
