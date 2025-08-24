@@ -12,7 +12,7 @@ switch_to_llama_cpp_dir llama-cpp-master
 run_llama_server \
     --jinja \
     --reasoning-format none \
-    -m "${model_dir}/Qwen3-Coder-30B-A3B-Instruct-IQ4_XS.gguf" \
+    --model "${model_dir}/Qwen3-Coder-30B-A3B-Instruct-IQ4_XS.gguf" \
     --alias Qwen3-Coder-30B-A3B-Instruct \
     --chat-template-file "${model_dir}/template-1.jinja" \
     --gpu-layers 100 \

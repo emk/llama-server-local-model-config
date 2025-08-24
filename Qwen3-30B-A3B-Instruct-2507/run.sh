@@ -9,7 +9,7 @@ switch_to_llama_cpp_dir llama-cpp-master
 run_llama_server \
     --jinja \
     --reasoning-format none \
-    -m "${model_dir}/Qwen3-30B-A3B-Instruct-2507-IQ4_NL.gguf" \
+    --model "${model_dir}/Qwen3-30B-A3B-Instruct-2507-IQ4_NL.gguf" \
     --alias Qwen3-30B-A3B-Instruct-2507 \
     --gpu-layers 100 \
     --batch-size 2048 \
@@ -17,3 +17,10 @@ run_llama_server \
     --no-mmap \
     --ctx-size "$(( 32*1024 ))" \
     --flash-attn
+
+# We could probably go faster with:
+#
+#    --model-draft "${model_dir}/Qwen3-0.6B-IQ4_NL.gguf" \
+#    --gpu-layers-draft 100 \
+#
+# ...but this no longer fits on the GPU.

@@ -11,7 +11,7 @@ switch_to_llama_cpp_dir llama-cpp-master
 run_llama_server \
     --jinja \
     --reasoning-format auto \
-    -m "${model_dir}/gpt-oss-20b-F16.gguf" \
+    --model "${model_dir}/gpt-oss-20b-F16.gguf" \
     --alias gpt-oss-20b \
     --gpu-layers 100 \
     --batch-size 2048 \
