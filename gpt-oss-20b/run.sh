@@ -1,6 +1,8 @@
 #!/bin/bash
 #
 # Run the llama.cpp server with specific model and settings.
+#
+# Grammar from https://alde.dev/blog/gpt-oss-20b-with-cline-and-roo-code/.
 
 # Source centralized setup script
 source ../setup_llama_server.sh
