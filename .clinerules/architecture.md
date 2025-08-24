@@ -2,6 +2,7 @@
 
 The most important files are:
 
+- `README.md`: Project purpose & setup overview (mostly for humans, not needed for most edits)
 - `setup_llama_server.sh`: Common setup
 - `$MODEL/`: Model-specific subdirectories
   - `run.sh`: Model runner (sources `setup_llama_server.sh`)

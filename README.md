@@ -22,3 +22,7 @@ To use on a new machine:
 1. `cd` to an appropriate model directory.
 2. Read `./run.sh` and download the model files it wants.
 3. Run `./run.sh`, and see if it works.
+
+## References
+
+- [Speculative decoding](https://www.theregister.com/2024/12/15/speculative_decoding/) and draft models.
