@@ -22,17 +22,29 @@ fi
 # Remember the directory containing our models.
 model_dir="$(pwd)"
 
-# Default arguments for llama-server that are common across models. These are
-# arguments that should not need to be changed for different model sizes,
-# families, or types.
-#
-# We run this on port 3191 instead of 3190, to avoid conflict with Jan AI.
-llama_default_args="--no-webui --api-key $API_KEY --host ${HOST:-0.0.0.0} --port ${PORT:-3191} --no-context-shift --log-verbose"
-
-echo "$llama_default_args"
-
 # Function to change to the llama-cpp directory
 switch_to_llama_cpp_dir() {
   local llama_dir="$1"
   cd ~/src/"$llama_dir" || exit 1
+}
+
+# Function to run the llama.cpp server with common default arguments.
+# Additional arguments should be passed to this function.
+run_llama_server() {
+  # Default arguments for llama-server that are common across models. These are
+  # arguments that should not need to be changed for different model sizes,
+  # families, or types.
+  #
+  # We run this on port 3191 instead of 3190, to avoid conflict with Jan AI.
+  local default_args=(
+    --no-webui
+    --api-key "$API_KEY"
+    --host "${HOST:-0.0.0.0}"
+    --port "${PORT:-3191}"
+    --no-context-shift
+    --log-verbose
+  )
+  
+  # Execute llama-server with default args followed by any additional args
+  build/bin/llama-server "${default_args[@]}" "$@"
 }

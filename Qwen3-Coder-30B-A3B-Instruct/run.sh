@@ -9,7 +9,7 @@
 source ../setup_llama_server.sh
 switch_to_llama_cpp_dir llama-cpp-master
 
-build/bin/llama-server $llama_default_args \
+run_llama_server \
     --jinja \
     --reasoning-format none \
     -m "${model_dir}/Qwen3-Coder-30B-A3B-Instruct-IQ4_XS.gguf" \
